@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="EnemyScore" type="Label"]
+anchor_bottom = 0.024
+margin_left = 236.0
+margin_top = 10.0
+margin_right = 276.0
+margin_bottom = 17.9789
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

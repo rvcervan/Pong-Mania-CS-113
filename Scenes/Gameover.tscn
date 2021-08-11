@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="Label" type="Label"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.5
+margin_top = -7.0
+margin_right = 36.5
+margin_bottom = 7.0
+text = "Game Over"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

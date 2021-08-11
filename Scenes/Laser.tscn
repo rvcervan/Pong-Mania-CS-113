@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/laser.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Laser.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.2949, 1.72409 )
+
+[node name="Laser" type="KinematicBody2D"]
+position = Vector2( 61.7363, 23.1928 )
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.0288086, 0.00160217 )
+scale = Vector2( 0.0390602, 0.136721 )
+texture = ExtResource( 1 )

@@ -1,0 +1,144 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://menuSprites/_Level2.png" type="Texture" id=1]
+[ext_resource path="res://menuSprites/_Level3.png" type="Texture" id=2]
+[ext_resource path="res://menuSprites/Level3.png" type="Texture" id=3]
+[ext_resource path="res://menuSprites/_Level5.png" type="Texture" id=4]
+[ext_resource path="res://menuSprites/_Level6.png" type="Texture" id=5]
+[ext_resource path="res://menuSprites/_Level4.png" type="Texture" id=6]
+[ext_resource path="res://menuSprites/_Level1.png" type="Texture" id=7]
+[ext_resource path="res://menuSprites/Back.png" type="Texture" id=8]
+[ext_resource path="res://menuSprites/Level4.png" type="Texture" id=9]
+[ext_resource path="res://menuSprites/Level1.png" type="Texture" id=10]
+[ext_resource path="res://menuSprites/_Back.png" type="Texture" id=11]
+[ext_resource path="res://menuSprites/Level5.png" type="Texture" id=12]
+[ext_resource path="res://menuSprites/Level2.png" type="Texture" id=13]
+[ext_resource path="res://menuSprites/Level6.png" type="Texture" id=14]
+[ext_resource path="res://music/officialGameMusic/TitleMenuSong.wav" type="AudioStream" id=15]
+[ext_resource path="res://Scripts/LevelSelectScreen.gd" type="Script" id=16]
+
+[node name="LevelSelectScreen" type="Node2D"]
+script = ExtResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="."]
+centered = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 20
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_top = 20.0
+margin_right = 522.0
+margin_bottom = 287.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+margin_left = 67.0
+margin_right = 454.0
+margin_bottom = 36.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+button_mask = 0
+texture_normal = ExtResource( 10 )
+texture_focused = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+margin_left = 74.0
+margin_top = 40.0
+margin_right = 448.0
+margin_bottom = 74.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 13 )
+texture_focused = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Level 1"
+}
+
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+margin_left = 74.0
+margin_top = 78.0
+margin_right = 448.0
+margin_bottom = 113.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 3 )
+texture_focused = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "Level 1"
+}
+
+[node name="TextureButton4" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+margin_top = 117.0
+margin_right = 522.0
+margin_bottom = 151.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 9 )
+texture_focused = ExtResource( 6 )
+__meta__ = {
+"_editor_description_": "Level 1"
+}
+
+[node name="TextureButton5" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+margin_left = 67.0
+margin_top = 155.0
+margin_right = 454.0
+margin_bottom = 191.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 12 )
+texture_focused = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": "Level 1"
+}
+
+[node name="TextureButton6" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+margin_left = 53.0
+margin_top = 195.0
+margin_right = 468.0
+margin_bottom = 228.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 14 )
+texture_focused = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": "Level 1"
+}
+
+[node name="TextureButton7" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+margin_left = 189.0
+margin_top = 232.0
+margin_right = 332.0
+margin_bottom = 267.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 8 )
+texture_focused = ExtResource( 11 )
+__meta__ = {
+"_editor_description_": "Level 1"
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -24.0
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton3" to="." method="_on_TextureButton3_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton4" to="." method="_on_TextureButton4_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton5" to="." method="_on_TextureButton5_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton6" to="." method="_on_TextureButton6_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TextureButton7" to="." method="_on_TextureButton7_pressed"]

@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scenes/Paddle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/SpaceInvaderGame.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/EnemyPaddle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/LowerWall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/UpperWall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/EnemyScore.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/PlayerScore.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Laser.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scripts/PongInvader.gd" type="Script" id=11]
+[ext_resource path="res://music/officialGameMusic/ChironBossSong.wav" type="AudioStream" id=12]
+[ext_resource path="res://Scenes/Boss Background.tscn" type="PackedScene" id=13]
+
+[node name="SpaceInvaderGame" type="Node"]
+script = ExtResource( 2 )
+
+[node name="Boss Background" parent="." instance=ExtResource( 13 )]
+
+[node name="Paddle" parent="." instance=ExtResource( 1 )]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Ball" parent="." instance=ExtResource( 3 )]
+
+[node name="EnemyPaddle" parent="." instance=ExtResource( 4 )]
+position = Vector2( 443.993, -179.111 )
+
+[node name="UpperWall" parent="." instance=ExtResource( 6 )]
+
+[node name="LowerWall" parent="." instance=ExtResource( 5 )]
+
+[node name="PongInvader" parent="." instance=ExtResource( 4 )]
+position = Vector2( 890, 49 )
+script = ExtResource( 11 )
+width = 20
+height = 80
+
+[node name="PongInvader2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 890, 159 )
+script = ExtResource( 11 )
+width = 20
+height = 80
+
+[node name="PongInvader3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 890, 266 )
+collision_mask = 2147483649
+script = ExtResource( 11 )
+width = 20
+height = 80
+
+[node name="PongInvader4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 890, 370 )
+collision_mask = 2147483649
+script = ExtResource( 11 )
+width = 20
+height = 80
+
+[node name="PlayerScore" parent="." instance=ExtResource( 8 )]
+text = ""
+
+[node name="EnemyScore" parent="." instance=ExtResource( 7 )]
+
+[node name="HitCounter" parent="." instance=ExtResource( 8 )]
+margin_left = 88.0771
+margin_top = 9.6856
+margin_right = 171.077
+margin_bottom = 16.3976
+
+[node name="Pause" parent="." instance=ExtResource( 9 )]
+
+[node name="Laser" parent="." instance=ExtResource( 10 )]
+
+[node name="LaserTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+[connection signal="allInvadersDied" from="PongInvader" to="." method="_on_PongInvader_allInvadersDied"]
+[connection signal="invaderDied" from="PongInvader" to="." method="_on_PongInvader_invaderDied"]
+[connection signal="invaderTouchedPaddle" from="PongInvader" to="." method="_on_PongInvader_invaderTouchedPaddle"]
+[connection signal="allInvadersDied" from="PongInvader2" to="." method="_on_PongInvader2_allInvadersDied"]
+[connection signal="invaderDied" from="PongInvader2" to="." method="_on_PongInvader2_invaderDied"]
+[connection signal="invaderTouchedPaddle" from="PongInvader2" to="." method="_on_PongInvader2_invaderTouchedPaddle"]
+[connection signal="allInvadersDied" from="PongInvader3" to="." method="_on_PongInvader3_allInvadersDied"]
+[connection signal="invaderDied" from="PongInvader3" to="." method="_on_PongInvader3_invaderDied"]
+[connection signal="invaderTouchedPaddle" from="PongInvader3" to="." method="_on_PongInvader3_invaderTouchedPaddle"]
+[connection signal="allInvadersDied" from="PongInvader4" to="." method="_on_PongInvader4_allInvadersDied"]
+[connection signal="invaderDied" from="PongInvader4" to="." method="_on_PongInvader4_invaderDied"]
+[connection signal="invaderTouchedPaddle" from="PongInvader4" to="." method="_on_PongInvader4_invaderTouchedPaddle"]
+[connection signal="timeout" from="LaserTimer" to="." method="_on_LaserTimer_timeout"]

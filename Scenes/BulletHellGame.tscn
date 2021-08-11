@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/BulletHellGame.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Paddle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/UpperWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/LowerWall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/BallLaserShooter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=6]
+[ext_resource path="res://music/officialGameMusic/BulletHellSong.wav" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/Boss Background.tscn" type="PackedScene" id=8]
+
+[node name="BulletHellGame" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Boss Background" parent="." instance=ExtResource( 8 )]
+
+[node name="Paddle" parent="." instance=ExtResource( 2 )]
+collision_layer = 3
+collision_mask = 3
+
+[node name="LaserTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UpperWall" parent="." instance=ExtResource( 3 )]
+
+[node name="LowerWall" parent="." instance=ExtResource( 4 )]
+
+[node name="FirstWaveTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="HitCounter" type="Label" parent="."]
+margin_left = 88.0
+margin_top = 9.0
+margin_right = 171.0
+margin_bottom = 16.0
+text = "Test"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BallLaserShooter1" parent="." instance=ExtResource( 5 )]
+
+[node name="BallLaserShooter2" parent="." instance=ExtResource( 5 )]
+
+[node name="BallLaserShooter3" parent="." instance=ExtResource( 5 )]
+
+[node name="BallPatternTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="PaddleSpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Pause" parent="." instance=ExtResource( 6 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+[connection signal="timeout" from="LaserTimer" to="." method="_on_LaserTimer_timeout"]
+[connection signal="timeout" from="FirstWaveTimer" to="." method="_on_FirstWaveTimer_timeout"]
+[connection signal="last_laser" from="BallLaserShooter1" to="." method="_on_BallLaserShooter1_last_laser"]
+[connection signal="timeout" from="BallPatternTimer" to="." method="_on_BallPatternTimer_timeout"]
+[connection signal="timeout" from="PaddleSpawnTimer" to="." method="_on_PaddleSpawnTimer_timeout"]
